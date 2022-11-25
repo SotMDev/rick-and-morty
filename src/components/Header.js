@@ -17,7 +17,8 @@ const Header = () => {
 					<Col xs={6}>
 						<nav className={"navigation"}>
 							<NavLink to="/">Home</NavLink>
-							<NavLink to="/contact">Contact</NavLink>
+							<NavLink to="/locations">Locations</NavLink>
+							<NavLink to="/characters">Characters</NavLink>
 						</nav>
 					</Col>
 				</Row>

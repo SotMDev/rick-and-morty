@@ -1,0 +1,20 @@
+@import '../variables';
+
+.location-card {
+	padding: 17px 25px;
+	background: $warning-color;
+	border-radius: 15px;
+	h2 {
+		margin-bottom: 10px;
+	}
+	.card-row {
+		display: grid;
+		grid-template-columns: 1.2fr 2fr;
+		> div {
+			line-height: 22px;
+			&.description {
+				font-weight: 500;
+			}
+		}
+	}
+}

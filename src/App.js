@@ -4,7 +4,8 @@ import './assets/styles/style.scss';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
-import Contact from "./pages/Contact";
+import Locations from "./pages/Locations";
+import Characters from "./pages/Characters";
 
 function App() {
 	return (
@@ -12,7 +13,8 @@ function App() {
 			<Header/>
 			<Routes>
 				<Route exact path="/" element={<Home/>}></Route>
-				<Route path="/contact" element={<Contact/>}></Route>
+				<Route path="/locations" element={<Locations/>}></Route>
+				<Route path="/characters" element={<Characters/>}></Route>
 			</Routes>
 			<Footer />
 		</div>
