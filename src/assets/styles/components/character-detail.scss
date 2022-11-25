@@ -1,0 +1,46 @@
+@import '../variables';
+
+.character-detail {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-column-gap: 50px;
+	img {
+		width: 100%;
+	}
+	.character-info {
+		display: flex;
+		justify-content: space-between;
+		.character-status {
+			display: flex;
+			&.alive {
+				&:before {
+					background: $success-color;
+				}
+			}
+			&.dead {
+				&:before {
+					background: $danger-color;
+				}
+			}
+			&.unknown {
+				&:before {
+					background: $passive-color;
+				}
+			}
+			&:before {
+				content: '';
+				width: 16px;
+				height: 16px;
+				border-radius: 16px;
+				margin-right: 6px;
+				margin-top: 2px;
+			}
+		}
+		.character-gender {
+			font-style: italic;
+			color: #818181;
+			text-align: right;
+			font-weight: 300;
+		}
+	}
+}

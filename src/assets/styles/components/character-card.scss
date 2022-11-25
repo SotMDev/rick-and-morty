@@ -1,0 +1,39 @@
+@import '../variables';
+
+
+.character-card {
+	img {
+		border-radius: $base-radius;
+	}
+	h1 {
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+	}
+	> div {
+		display: flex;
+		align-items: center;
+		&.alive {
+			&:before {
+				background: $success-color;
+			}
+		}
+		&.dead {
+			&:before {
+				background: $danger-color;
+			}
+		}
+		&.unknown {
+			&:before {
+				background: $passive-color;
+			}
+		}
+		&:before {
+			content: '';
+			width: 16px;
+			height: 16px;
+			border-radius: 16px;
+			margin-right: 6px;
+		}
+	}
+}

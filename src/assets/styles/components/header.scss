@@ -6,6 +6,9 @@
 	border-bottom: 1px solid rgba(17, 176, 200, 0.11);
 	.navigation {
 		text-align: right;
+		.active {
+			color: $secondary-color;
+		}
 	}
 }
 
