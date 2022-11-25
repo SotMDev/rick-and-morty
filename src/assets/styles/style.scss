@@ -1,0 +1,23 @@
+@import "~bootstrap/scss/bootstrap";
+@import 'variables';
+@import 'global';
+@import 'components/header';
+@import 'components/footer';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+body {
+	font-family: 'Montserrat', sans-serif;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
