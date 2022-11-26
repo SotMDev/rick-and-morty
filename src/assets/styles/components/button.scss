@@ -12,6 +12,7 @@
 	font-size: 13px;
 	cursor: pointer;
 	transition: $transition-base;
+	user-select: none;
 	&:before {
 		content: "";
 		display: inline-block;

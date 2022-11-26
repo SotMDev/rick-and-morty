@@ -2,6 +2,8 @@ import {useEffect, useState} from "react";
 import {useParams} from 'react-router-dom';
 import {Container} from "react-bootstrap";
 import API from "../services/API";
+import styleOtherCharacterCard from "../assets/styles/components/other-character-card.scss";
+import styleCharacterDetail from "../assets/styles/components/character-detail.scss";
 
 const CharacterDetail = () => {
 

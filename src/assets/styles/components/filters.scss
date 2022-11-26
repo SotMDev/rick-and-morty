@@ -3,8 +3,16 @@
 .filter {
 	margin-bottom: 40px;
 	.filters {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
 		.button {
 			margin-right: 12px;
+		}
+	}
+	@media (max-width: 768px) {
+		.filters {
+			overflow: auto;
 		}
 	}
 }

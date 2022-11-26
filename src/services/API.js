@@ -14,7 +14,6 @@ class API {
 			if (data) {
 				this.onSuccess(data)
 			}
-			console.log(data);
 			return data;
 		} catch (axiosError) {
 			if (axiosError.response) {

@@ -4,15 +4,26 @@
 	padding: 30px 0;
 	margin-bottom: 40px;
 	border-bottom: 1px solid rgba(17, 176, 200, 0.11);
+	.logo {
+		height: 60px;
+		img {
+			height: 60px;
+		}
+	}
 	.navigation {
 		text-align: right;
 		.active {
 			color: $secondary-color;
 		}
 	}
+	@media (max-width: 768px) {
+		.logo {
+			text-align: center;
+			margin-bottom: 20px;
+		}
+		.navigation {
+			text-align: center;
+		}
+	}
 }
 
-
-.logo {
-	height: 60px;
-}

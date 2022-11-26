@@ -21,7 +21,7 @@ const Characters = () => {
 				<Row>
 					{
 						characterData && characterData?.results?.map((character,index) => (
-							<Col className={"mb-4"} key={index} xs={3}>
+							<Col className={"mb-4"} key={index} xs={6} sm={4} md={3}>
 								<NavLink to={`/characters/${character.id}`}>
 									<div className="character-card">
 										<div className="character-image">
@@ -38,7 +38,7 @@ const Characters = () => {
 						))
 					}
 				</Row>
-				<Pagination data={characterData} setData={setCharacterData} />
+				<Pagination type={'character'} data={characterData} setData={setCharacterData} />
 			</Container>
 		</>
 	)

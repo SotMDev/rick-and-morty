@@ -43,4 +43,8 @@
 			font-weight: 300;
 		}
 	}
+	@media (max-width: 768px) {
+		grid-template-columns: 1fr;
+		grid-row-gap: 20px;
+	}
 }

@@ -18,7 +18,7 @@ const Locations = () => {
 				<Row>
 					{
 						locationData && locationData?.results?.map((location,index) => (
-							<Col className={"mb-4"} key={index} xs={4}>
+							<Col className={"mb-4"} key={index} xs={12} sm={6} md={4}>
 								<div className="location-card">
 									<h2>{location.name}</h2>
 									<div className={"card-row"}>
@@ -35,11 +35,10 @@ const Locations = () => {
 									</div>
 								</div>
 							</Col>
-
 						))
 					}
 				</Row>
-				 <Pagination />
+				<Pagination type={'location'} data={locationData} setData={setLocationData} />
 			</Container>
 		</>
 	)

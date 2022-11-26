@@ -1,6 +1,5 @@
 @import '../variables';
 
-
 .other-character-list {
 	display: flex;
 	flex-wrap: wrap;
@@ -12,10 +11,16 @@
 			display: inline-block;
 		}
 	}
+	@media (max-width: 768px) {
+		> div {
+			width: 100%;
+		}
+	}
 }
 .other-character-card {
 	display: grid;
 	grid-template-columns: 1fr 3fr;
+	cursor: pointer;
 	img {
 		border-radius: $base-radius;
 		display: block;

@@ -1,0 +1,50 @@
+@import '../variables';
+
+.pagination {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	> ul {
+		display: flex;
+		align-items: center;
+		li {
+			list-style-type: none;
+			user-select: none;
+			a {
+				color: $text-color;
+				width: 50px;
+				height: 50px;
+				flex: 0 0 50px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin: 0 4px;
+				cursor: pointer;
+				border-radius: 50%;
+			}
+			&.previous,
+			&.next {
+				&.disabled {
+					a {
+						cursor: not-allowed;
+					}
+				}
+			}
+			&:hover {
+				a {
+					background: rgba($passive-color, .25);
+				}
+			}
+			&.selected {
+				a {
+					background: $passive-color;
+				}
+			}
+		}
+	}
+	@media (max-width: 768px) {
+		ul {
+			overflow: auto;
+		}
+	}
+}

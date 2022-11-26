@@ -8,20 +8,26 @@ import Locations from "./pages/Locations";
 import Characters from "./pages/Characters";
 import CharacterDetail from "./pages/CharacterDetail";
 
+import {Provider} from 'react-redux'
+import store from './store'
+
 function App() {
+
 	return (
-		<div className="App">
-			<Header/>
-			<Routes>
-				<Route exact path="/" element={<Home/>}></Route>
-				<Route path="/locations" element={<Locations/>}></Route>
-				<Route path="/characters">
-					<Route index element={<Characters />} />
-					<Route path=":id" element={<CharacterDetail />} />
-				</Route>
-			</Routes>
-			<Footer />
-		</div>
+		<Provider store={store}>
+			<div className="App">
+				<Header/>
+				<Routes>
+					<Route exact path="/" element={<Home/>}></Route>
+					<Route path="/locations" element={<Locations/>}></Route>
+					<Route path="/characters">
+						<Route index element={<Characters/>}/>
+						<Route path=":id" element={<CharacterDetail/>}/>
+					</Route>
+				</Routes>
+				<Footer/>
+			</div>
+		</Provider>
 	);
 }
 
