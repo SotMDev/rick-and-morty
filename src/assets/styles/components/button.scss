@@ -29,6 +29,7 @@
 		&:hover {
 			background: rgba($danger-color, .2);
 		}
+		&.active,
 		&:active {
 			background: rgba($danger-color, .5);
 		}
@@ -48,6 +49,7 @@
 		&:hover {
 			background: rgba($success-color, .2);
 		}
+		&.active,
 		&:active {
 			background: rgba($success-color, .5);
 		}
@@ -67,10 +69,11 @@
 		&:hover {
 			background: rgba($passive-color, .2);
 		}
+		&.active,
 		&:active {
 			background: rgba($passive-color, .5);
 		}
-		&.passive{
+		&.passive {
 			background: transparent;
 			&:before {
 				background: rgba($passive-color, .2);
