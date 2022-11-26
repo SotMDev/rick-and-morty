@@ -17,14 +17,16 @@ const Characters = () => {
 	return (
 		<>
 			<Container>
-				<Filter />
+				<Filter characterData={characterData} setCharacterData={setCharacterData} />
 				<Row>
 					{
 						characterData && characterData?.results?.map((character,index) => (
 							<Col className={"mb-4"} key={index} xs={3}>
 								<NavLink to={`/characters/${character.id}`}>
 									<div className="character-card">
-										<img src={character.image} alt={character.name}/>
+										<div className="character-image">
+											<img src={character.image} alt={character.name}/>
+										</div>
 										<h1>{character.name}</h1>
 										<div className={character.status.toLowerCase()}>
 											{character.status} - {character.species}

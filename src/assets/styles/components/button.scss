@@ -1,0 +1,80 @@
+@import '../variables';
+
+.button {
+	padding: 14px 11px;
+	border: 1px solid transparent;
+	border-radius: 50px;
+	display: inline-flex;
+	align-items: center;
+	width: 120px;
+	height: 40px;
+	font-weight: 500;
+	font-size: 13px;
+	cursor: pointer;
+	transition: $transition-base;
+	&:before {
+		content: "";
+		display: inline-block;
+		width: 12px;
+		height: 12px;
+		border-radius: 50%;
+		margin-right: 11px;
+	}
+	&.dead {
+		border-color: $danger-color;
+		background: rgba($danger-color, .05);
+		&:before {
+			background: $danger-color;
+		}
+		&:hover {
+			background: rgba($danger-color, .2);
+		}
+		&:active {
+			background: rgba($danger-color, .5);
+		}
+		&.passive{
+			background: transparent;
+			&:before {
+				background: rgba($danger-color, .2);
+			}
+		}
+	}
+	&.alive {
+		border-color: $success-color;
+		background: rgba($success-color, .05);
+		&:before {
+			background: $success-color;
+		}
+		&:hover {
+			background: rgba($success-color, .2);
+		}
+		&:active {
+			background: rgba($success-color, .5);
+		}
+		&.passive{
+			background: transparent;
+			&:before {
+				background: rgba($success-color, .2);
+			}
+		}
+	}
+	&.unknown {
+		border-color: $passive-color;
+		background: rgba($passive-color, .05);
+		&:before {
+			background: $passive-color;
+		}
+		&:hover {
+			background: rgba($passive-color, .2);
+		}
+		&:active {
+			background: rgba($passive-color, .5);
+		}
+		&.passive{
+			background: transparent;
+			&:before {
+				background: rgba($passive-color, .2);
+			}
+		}
+	}
+}

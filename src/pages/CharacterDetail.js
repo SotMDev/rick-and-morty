@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {NavLink, useParams} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import {Container} from "react-bootstrap";
 import API from "../services/API";
 
@@ -10,8 +10,17 @@ const CharacterDetail = () => {
 	const [characterData, setCharacterData] = useState({});
 	const [otherCharacterData, setOtherCharacterData] = useState([]);
 
+	const getCharacter = (endpoint, setter) => {
+		Service.Request(endpoint)
+			.then(response => {
+				setter(response);
+			})
+			.catch(err => console.log(err))
+			.finally(() => console.log('res'));
+	};
+
 	useEffect(() => {
-		Service.Request(`${process.env.REACT_APP_CHARACTERS_API}/${id}`).then(response => setCharacterData(response));
+		getCharacter(`${process.env.REACT_APP_CHARACTERS_API}/${id}`, setCharacterData);
 	}, [])
 
 	useEffect(() => {
@@ -20,7 +29,7 @@ const CharacterDetail = () => {
 				const filteredCharacterIDs = response.results.map(res => {
 					return res.id;
 				});
-				Service.Request(`${process.env.REACT_APP_CHARACTERS_API}/${filteredCharacterIDs.toString()}`).then(otherCharacters => setOtherCharacterData(otherCharacters));
+				getCharacter(`${process.env.REACT_APP_CHARACTERS_API}/${filteredCharacterIDs.toString()}`, setOtherCharacterData);
 			});
 		}
 	}, [characterData])
@@ -46,8 +55,8 @@ const CharacterDetail = () => {
 							{
 								otherCharacterData?.map((otherCharacter, index) => (
 									<div className={""} key={index}>
-
-										<NavLink onClick={() => console.log(otherCharacter?.id)} to={`/characters/${otherCharacter.id}`}>
+										<div
+											onClick={() => Service.Request(`${process.env.REACT_APP_CHARACTERS_API}/${otherCharacter.id}`).then(response => setCharacterData(response))}>
 											<div className="other-character-card">
 												<img src={otherCharacter.image} alt={otherCharacter.name}/>
 												<div>
@@ -56,7 +65,7 @@ const CharacterDetail = () => {
 													<i>{otherCharacter?.type ? otherCharacter?.type : '?'} - {otherCharacter?.gender}</i>
 												</div>
 											</div>
-										</NavLink>
+										</div>
 									</div>
 								))
 							}
