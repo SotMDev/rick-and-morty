@@ -38,7 +38,7 @@ const Characters = () => {
 						))
 					}
 				</Row>
-				<Pagination />
+				<Pagination data={characterData} setData={setCharacterData} />
 			</Container>
 		</>
 	)
