@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
 	value: {
-		loading: false,
+		isLoading: false,
 		searchParams: {
 			query: '',
 			next: null,
@@ -16,8 +16,8 @@ export const DataState = createSlice({
 	name: 'data',
 	initialState,
 	reducers: {
-		setLoading: (state, action) => {
-			state.value.loading = action.payload
+		setIsLoading: (state, action) => {
+			state.value.isLoading = action.payload
 		},
 		setSearchParams: (state, action) => {
 			state.value.searchParams = action.payload
@@ -28,6 +28,6 @@ export const DataState = createSlice({
 	},
 })
 
-export const { setLoading, setSearchParams, setPageCount } = DataState.actions;
+export const { setIsLoading, setSearchParams, setPageCount } = DataState.actions;
 
 export default DataState.reducer

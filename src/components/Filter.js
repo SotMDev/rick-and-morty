@@ -8,6 +8,7 @@ const Filter = ({characterData, setCharacterData}) => {
 
 	const Service = new API();
 	const dispatch = useDispatch();
+	const isLoading = useSelector(state => state.data.value.isLoading);
 	const searchParams = useSelector(state => state.data.value.searchParams);
 	const pageCount = useSelector(state => state.data.value.pageCount);
 

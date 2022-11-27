@@ -4,21 +4,28 @@ import {Container} from "react-bootstrap";
 import API from "../services/API";
 import styleOtherCharacterCard from "../assets/styles/components/other-character-card.scss";
 import styleCharacterDetail from "../assets/styles/components/character-detail.scss";
+import {useDispatch, useSelector} from "react-redux";
+import {setIsLoading} from "../store/data";
 
 const CharacterDetail = () => {
 
 	let {id} = useParams();
+	const isLoading = useSelector(state => state.data.value.isLoading);
+	const dispatch = useDispatch();
 	const Service = new API();
 	const [characterData, setCharacterData] = useState({});
 	const [otherCharacterData, setOtherCharacterData] = useState([]);
 
 	const getCharacter = (endpoint, setter) => {
+		dispatch(setIsLoading(true));
 		Service.Request(endpoint)
 			.then(response => {
 				setter(response);
+				setTimeout(() => {
+					dispatch(setIsLoading(false));
+				}, 600);
 			})
-			.catch(err => console.log(err))
-			.finally(() => console.log('res'));
+			.catch(err => console.log(err));
 	};
 
 	useEffect(() => {
@@ -39,6 +46,10 @@ const CharacterDetail = () => {
 	return (
 		<>
 			<Container>
+				{
+					isLoading &&
+					<div>Loading</div>
+				}
 				<div className={`character-detail`}>
 					<div className="character-detail-left-side">
 						<img src={characterData?.image} alt=""/>

@@ -2,36 +2,50 @@ import {useEffect, useState} from "react";
 import API from "../services/API";
 import {Container, Row, Col} from "react-bootstrap";
 import Pagination from "../components/Pagination";
+import {useDispatch, useSelector} from "react-redux";
+import {setIsLoading} from "../store/data";
 
 const Locations = () => {
 
+	const isLoading = useSelector(state => state.data.value.isLoading);
+	const dispatch = useDispatch();
 	const [locationData, setLocationData] = useState({});
 
 	useEffect(() => {
 		const Service = new API();
-		Service.Request(process.env.REACT_APP_LOCATIONS_API).then(locations => setLocationData(locations));
+		dispatch(setIsLoading(true));
+		Service.Request(process.env.REACT_APP_LOCATIONS_API).then(locations => {
+			setLocationData(locations);
+			setTimeout(() => {
+				dispatch(setIsLoading(false));
+			}, 600);
+		});
 	}, []);
 
 	return (
 		<>
 			<Container>
+				{
+					isLoading &&
+					<div>Loading</div>
+				}
 				<Row>
 					{
 						locationData && locationData?.results?.map((location,index) => (
-							<Col className={"mb-4"} key={index} xs={12} sm={6} md={4}>
+							<Col className={"mb-4"} key={index} xs={12} sm={6} lg={4}>
 								<div className="location-card">
 									<h2>{location.name}</h2>
 									<div className={"card-row"}>
-										<div className={"title"}>Type</div>
-										<div className={"description"}>: {location.type ? location.type : '-'}</div>
+										<div className={"title"}>Type <span>:</span></div>
+										<div className={"description"}>{location.type ? location.type : '-'}</div>
 									</div>
 									<div className={"card-row"}>
-										<div className={"title"}>Dimension</div>
-										<div className={"description"}>: {location.dimension ? location.dimension : '-'}</div>
+										<div className={"title"}>Dimension <span>:</span></div>
+										<div className={"description"}>{location.dimension ? location.dimension : '-'}</div>
 									</div>
 									<div className={"card-row"}>
-										<div className={"title"}>Resident count</div>
-										<div className={"description"}>: {location.residents?.length ? location.residents.length : 0}</div>
+										<div className={"title"}>Resident count <span>:</span></div>
+										<div className={"description"}>{location.residents?.length ? location.residents.length : 0}</div>
 									</div>
 								</div>
 							</Col>

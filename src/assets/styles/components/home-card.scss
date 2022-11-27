@@ -1,0 +1,17 @@
+@import '../variables';
+
+
+.card-list {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 20px;
+	.home-card {
+		padding: 20px;
+		border-radius: $base-radius;
+		color: $secondary-color;
+		text-align: center;
+		border: 1px solid $text-color;
+		margin: 0 10px;
+	}
+}
+
