@@ -1,17 +1,22 @@
 import ReactPaginate from "react-paginate";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import API from "../services/API";
 import style from "../assets/styles/components/pagination.scss";
 import {useEffect} from "react";
+import {setIsLoading} from "../store/data";
 
 const Pagination = ({type, data, setData}) => {
 
 	const Service = new API();
+	const dispatch = useDispatch();
 	const searchParams = useSelector(state => state.data.value.searchParams);
 	const pageCount = useSelector(state => state.data.value.pageCount);
 
 
 	const handlePageClick = (event) => {
+
+
+
 		let params = '';
 		let url;
 		const selectedPage = parseInt(event.selected) + 1;
@@ -21,9 +26,13 @@ const Pagination = ({type, data, setData}) => {
 		} else {
 			url = `${process.env.REACT_APP_CHARACTERS_API}/${params}`;
 		}
+		dispatch(setIsLoading(true));
 		Service.Request(url).then(response => {
 			setData(response);
 			clearSecondSelected();
+			setTimeout(() => {
+				dispatch(setIsLoading(false));
+			}, 600);
 		});
 	};
 

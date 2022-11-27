@@ -2,7 +2,7 @@ import {useEffect} from "react";
 import style from '../assets/styles/components/filters.scss'
 import API from "../services/API";
 import {useDispatch, useSelector} from "react-redux";
-import {setPageCount, setSearchParams} from "../store/data";
+import {setIsLoading, setPageCount, setSearchParams} from "../store/data";
 
 const Filter = ({characterData, setCharacterData}) => {
 
@@ -25,8 +25,12 @@ const Filter = ({characterData, setCharacterData}) => {
 
 	useEffect(() => {
 		if (searchParams.query !== '') {
+			dispatch(setIsLoading(true));
 			Service.Request(`${process.env.REACT_APP_CHARACTERS_API}?page=1&status=${searchParams.query}`).then(characters => {
 				setCharacterData(characters);
+				setTimeout(() => {
+					dispatch(setIsLoading(false));
+				}, 600);
 			});
 		}
 	}, [searchParams]);
