@@ -4,6 +4,10 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	position: relative;
+	&.loading-active {
+		pointer-events: none;
+	}
 	> ul {
 		display: flex;
 		align-items: center;

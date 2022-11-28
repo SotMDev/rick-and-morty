@@ -3,6 +3,7 @@ import style from '../assets/styles/components/filters.scss'
 import API from "../services/API";
 import {useDispatch, useSelector} from "react-redux";
 import {setIsLoading, setPageCount, setSearchParams} from "../store/data";
+import Skeleton from "react-loading-skeleton";
 
 const Filter = ({characterData, setCharacterData}) => {
 
@@ -37,20 +38,34 @@ const Filter = ({characterData, setCharacterData}) => {
 
 	return (
 		<div className={"filter"}>
-			<h3>Filter by status: </h3>
-			<div className="filters">
-				{
-					['Dead', 'Alive', 'Unknown'].map(((type, index) => (
-						<div
-							key={index}
-							className={`button ${type.toLowerCase()} ${searchParams.query === type.toLowerCase() ? 'active' : ''}`}
-							onClick={() => filterProducts(type.toLowerCase())}
-						>
-							{type}
-						</div>
-					)))
-				}
-			</div>
+			{
+				isLoading ?
+				<div>
+					<Skeleton style={{ marginBottom: "8px" }} width={100} height={30} count={1}/>
+					<div style={{ display: "flex", overflow: "auto"}}>
+						<Skeleton style={{ marginRight: "20px" }} height={40} width={100} count={1}/>
+						<Skeleton style={{ marginRight: "20px" }} height={40} width={100} count={1}/>
+						<Skeleton style={{ marginRight: "20px" }} height={40} width={100} count={1}/>
+					</div>
+				</div>
+				:
+				<div>
+					<h3>Filter by status: </h3>
+					<div className="filters">
+						{
+							['Dead', 'Alive', 'Unknown'].map(((type, index) => (
+								<div
+									key={index}
+									className={`button ${type.toLowerCase()} ${searchParams.query === type.toLowerCase() ? 'active' : ''}`}
+									onClick={() => filterProducts(type.toLowerCase())}
+								>
+									{type}
+								</div>
+							)))
+						}
+					</div>
+				</div>
+			}
 		</div>
 	)
 }

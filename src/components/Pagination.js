@@ -1,22 +1,19 @@
-import ReactPaginate from "react-paginate";
-import {useDispatch, useSelector} from "react-redux";
-import API from "../services/API";
-import style from "../assets/styles/components/pagination.scss";
 import {useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import ReactPaginate from "react-paginate";
+import API from "../services/API";
 import {setIsLoading} from "../store/data";
+import style from "../assets/styles/components/pagination.scss";
 
 const Pagination = ({type, data, setData}) => {
 
 	const Service = new API();
 	const dispatch = useDispatch();
+	const isLoading = useSelector(state => state.data.value.isLoading);
 	const searchParams = useSelector(state => state.data.value.searchParams);
 	const pageCount = useSelector(state => state.data.value.pageCount);
 
-
 	const handlePageClick = (event) => {
-
-
-
 		let params = '';
 		let url;
 		const selectedPage = parseInt(event.selected) + 1;
@@ -57,6 +54,7 @@ const Pagination = ({type, data, setData}) => {
 			 Data, farklı bir componentten değiştirildiğinde(Filter),
 			 react router bunu algılayamıyor ve selected hala en son seçilen kalıyor.
 			 Default ilk sayfa getirildi.
+			 //TODO Muhtemelen hala buglı, temize çekilecek.
 		*/
 		const paginationItems = document.querySelectorAll('.pagination li');
 		const firstPagination = paginationItems[1];
@@ -70,7 +68,7 @@ const Pagination = ({type, data, setData}) => {
 	}, [pageCount])
 
 	return (
-		<div className={"pagination"}>
+		<div className={`pagination ${isLoading ? 'loading-active': ''}`}>
 			<ReactPaginate
 				breakLabel="..."
 				nextLabel=">"

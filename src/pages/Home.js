@@ -1,7 +1,6 @@
-import {NavLink} from "react-router-dom";
 import {Container} from "react-bootstrap";
-import styleHomeCard from "../assets/styles/components/home-card.scss";
 import image from "../assets/images/cover.jpg";
+import styleHomeCard from "../assets/styles/components/home-card.scss";
 
 const Home = () => {
 

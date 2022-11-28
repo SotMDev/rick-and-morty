@@ -25,7 +25,7 @@
 		text-overflow: ellipsis;
 		overflow: hidden;
 	}
-	> div {
+	> .character-info {
 		display: flex;
 		align-items: center;
 		&.alive {
@@ -49,6 +49,13 @@
 			height: 16px;
 			border-radius: 16px;
 			margin-right: 6px;
+		}
+	}
+	@media (max-width: 768px) {
+		.character-image {
+			img {
+				width: 100%;
+			}
 		}
 	}
 }

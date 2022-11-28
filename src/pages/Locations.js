@@ -1,11 +1,11 @@
 import {useEffect, useState} from "react";
-import API from "../services/API";
-import {Container, Row, Col} from "react-bootstrap";
-import Pagination from "../components/Pagination";
 import {useDispatch, useSelector} from "react-redux";
-import {setIsLoading} from "../store/data";
+import {Container, Row, Col} from "react-bootstrap";
 import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
+import API from "../services/API";
+import Pagination from "../components/Pagination";
+import {setIsLoading} from "../store/data";
+import styleLocationCard from "../assets/styles/components/location-card.scss";
 
 const Locations = () => {
 
@@ -49,13 +49,11 @@ const Locations = () => {
 											</div>
 											<div className={"card-row"}>
 												<div className={"title"}>Dimension <span>:</span></div>
-												<div
-													className={"description"}>{location.dimension ? location.dimension : '-'}</div>
+												<div className={"description"}>{location.dimension ? location.dimension : '-'}</div>
 											</div>
 											<div className={"card-row"}>
 												<div className={"title"}>Resident count <span>:</span></div>
-												<div
-													className={"description"}>{location.residents?.length ? location.residents.length : 0}</div>
+												<div className={"description"}>{location.residents?.length ? location.residents.length : 0}</div>
 											</div>
 										</div>
 									</Col>

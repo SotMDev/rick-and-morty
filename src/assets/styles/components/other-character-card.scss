@@ -47,4 +47,9 @@
 			font-size: 16px;
 		}
 	}
+	&:hover {
+		h2 {
+			color: $secondary-color;
+		}
+	}
 }

@@ -29,7 +29,7 @@ class API {
 	}
 
 	onSuccess(data) {
-		//console.log(data)
+
 	}
 
 	onResponseError(responseError) {

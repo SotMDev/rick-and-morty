@@ -1,12 +1,13 @@
-import {Col, Container, Row} from "react-bootstrap";
 import {useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {NavLink} from "react-router-dom";
+import {Col, Container, Row} from "react-bootstrap";
+import Skeleton from "react-loading-skeleton";
 import API from "../services/API";
 import Pagination from "../components/Pagination";
 import Filter from "../components/Filter";
-import {NavLink} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
 import {setIsLoading} from "../store/data";
-import Skeleton from "react-loading-skeleton";
+import styleCharacterCard from "../assets/styles/components/character-card.scss";
 
 const Characters = () => {
 
@@ -23,6 +24,8 @@ const Characters = () => {
 			setTimeout(() => {
 				dispatch(setIsLoading(false));
 			}, 600);
+		}).catch(err => {
+			dispatch(setIsLoading(false));
 		});
 	}, []);
 
@@ -34,7 +37,7 @@ const Characters = () => {
 					isLoading ?
 						<Row>
 							{Array(20).fill('').map((skeleton, index) => (
-								<Col className={"mb-4"} key={index} xs={6} sm={4} lg={3}>
+								<Col className={"mb-4"} key={index} xs={12} sm={6} lg={3}>
 									<Skeleton height={200} count={1}/>
 								</Col>
 							))}
@@ -43,14 +46,14 @@ const Characters = () => {
 						<Row>
 							{
 								characterData && characterData?.results?.map((character,index) => (
-									<Col className={"mb-4"} key={index} xs={6} sm={4} lg={3}>
+									<Col className={"mb-4"} key={index} xs={12} sm={6} lg={3}>
 										<NavLink to={`/characters/${character.id}`}>
 											<div className="character-card">
 												<div className="character-image">
 													<img src={character.image} alt={character.name}/>
 												</div>
 												<h1>{character.name}</h1>
-												<div className={character.status.toLowerCase()}>
+												<div className={`character-info ${character.status.toLowerCase()}`}>
 													{character.status} - {character.species}
 												</div>
 											</div>

@@ -1,6 +1,7 @@
 import 'normalize.css';
 import {Route, Routes} from "react-router-dom";
 import './assets/styles/style.scss';
+import 'react-loading-skeleton/dist/skeleton.css'
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
